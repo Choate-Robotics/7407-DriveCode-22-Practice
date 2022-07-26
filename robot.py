@@ -1,5 +1,6 @@
 import commands2
 import wpilib
+from robotpy_toolkit_7407.utils import logger
 
 import autonomous
 import command
@@ -14,7 +15,7 @@ from oi.OI import OI
 
 class Robot(wpilib.TimedRobot):
     def __init__(self):
-        super().__init__()
+        super().__init__(constants.period)
 
     def robotInit(self):
         # Initialize Operator Interface
@@ -26,10 +27,28 @@ class Robot(wpilib.TimedRobot):
     # Pneumatics
 
     def teleopInit(self):
-        pass
+        wpilib.LiveWindow.disableAllTelemetry()
+        logger.Color = logger.NoColor
+
+        logger.info("Initializing robot...", "[Robot]")
+
+        robot_systems.Robot.intake.init()
+
+        OI.init()
+        OI.map_controls()
+
+        commands2.CommandScheduler.getInstance().setPeriod(constants.period)
+
+        logger.info("Robot initialized!", "[Robot]")
+
+    def robotPeriodic(self) -> None:
+        commands2.CommandScheduler.getInstance().run()
 
     def teleopPeriodic(self):
-        pass
+        logger.info(
+            f"Intake Speeds: {robot_systems.Robot.intake.get_intake_speeds()}",
+            "[ROBOT<-INTAKE]",
+        )
 
     def autonomousInit(self):
         pass

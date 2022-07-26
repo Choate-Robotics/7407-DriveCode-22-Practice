@@ -38,5 +38,5 @@ repos:
     language: system
     entry: flake8
     types: [python]
-    args: ['--max-line-length=120']
+    args: ['--max-line-length=120', '--ignore=F401']
     exclude: setup.py
