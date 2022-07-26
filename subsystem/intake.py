@@ -28,6 +28,7 @@ class Intake(Subsystem):
     def set_intake_turn_power(self, power: float):
         power = max(min(power, self.max_vel), self.min_vel)
         self.left_intake_motor.set_raw_output(power)
+        self.right_intake_motor.set_raw_output(power)
 
     def get_intake_turn_power(self):
         return (
