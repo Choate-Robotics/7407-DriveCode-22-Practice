@@ -1,7 +1,6 @@
 import commands2
+import ctre
 import wpilib
-
-import autonomous
 import command
 import config
 import constants
@@ -10,6 +9,8 @@ import sensors
 import subsystem
 import utils
 from oi.OI import OI
+
+from subsystem import Drivetrain
 
 
 class Robot(wpilib.TimedRobot):
@@ -32,10 +33,10 @@ class Robot(wpilib.TimedRobot):
         pass
 
     def autonomousInit(self):
-        pass
+        self.drivetrain = Drivetrain()
 
     def autonomousPeriodic(self):
-        pass
+        self.drivetrain.drive_motor_1.set_raw_output(.5)
 
     def disabledInit(self) -> None:
         pass
