@@ -37,7 +37,16 @@ class Robot(wpilib.TimedRobot):
 
     def autonomousPeriodic(self):
         self.drivetrain.drive_motor_1.set_raw_output(.5)
+        self.drivetrain.turn_motor_1.set_raw_output(.1)
 
+        self.drivetrain.drive_motor_2.set_raw_output(.5)
+        self.drivetrain.turn_motor_2.set_raw_output(.1)
+
+        self.drivetrain.drive_motor_3.set_raw_output(.5)
+        self.drivetrain.turn_motor_3.set_raw_output(.1)
+
+        self.drivetrain.drive_motor_4.set_raw_output(.5)
+        self.drivetrain.turn_motor_4.set_raw_output(.1)
     def disabledInit(self) -> None:
         pass
 
