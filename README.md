@@ -176,3 +176,21 @@ To integrate a branch with branch **Main**,  create a pull-request with the same
  - [WPILib Documentation](https://docs.wpilib.org/en/stable/index.html) RobotPy is just a wrapper for the WPILib C++ Code. Most of the structure remains the same.
  - [Chief Delphi](https://www.chiefdelphi.com/) Many a sensor problem have been fixed by looking here.
  - [7407 DriveCode-2021-Python](https://github.com/Choate-Robotics/7407-DriveCode-2021-Python) Worlds level code!
+
+
+## Running on M1 Mac
+
+1.    Paste the following command in your terminal to install Brew `/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"`
+2.    Configure your terminal as a ROSETTA TERMINAL. Go to applications -> terminal -> get info -> click open using rosetta
+3.  All of the next steps should be done with rosetta terminal
+4.  Type => vi /.zshrc => Enter => paste this => `alias ibrew="arch -x86_64 /usr/local/bin/brew"` => CTRL C => Type => :x => Enter
+5.  Type => vi /.zshrc => Enter => paste this => `alias pip=pip3` => CTRL C => Type => :x => Enter
+6.  Type => vi /.zshrc => Enter => paste this => `alias python=python3` => CTRL C => Type => :x => Enter
+7.  Type this and enter => `ibrew install python@3.9`
+8.  Create a new folder (USE VSCODE OR PYCHARM TERMINAL NOW)
+9.  Type => `curl -k https://install.python-poetry.org/ | python3.10 -` => Enter 
+10. Type => `git clone https://github.com/Choate-Robotics/7407-DriveCode-22-23` => and enter
+11. Type => `cd "7407-DriveCode-22-23"` => and Enter
+12. Type => `sudo pip install pint==0.19.2` => Enter
+13. Type => `poetry shell` => Enter
+14. Type => `poetry install` => Enter
