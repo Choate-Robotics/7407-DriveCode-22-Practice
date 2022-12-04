@@ -34,9 +34,12 @@ class Robot(wpilib.TimedRobot):
 
     def autonomousInit(self):
         self.drivetrain = Drivetrain()
+        self.drivetrain.init()
+        self.drivetrain.setDirection()
 
     def autonomousPeriodic(self):
-        self.drivetrain.drive_motor_1.set_raw_output(.5)
+        self.drivetrain.setLeftSpeed(0.25)
+        self.drivetrain.setRightSpeed(-0.25)
 
     def disabledInit(self) -> None:
         pass
