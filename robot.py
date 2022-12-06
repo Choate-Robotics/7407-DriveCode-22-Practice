@@ -1,5 +1,6 @@
 import commands2
 import wpilib
+import math
 
 #import autonomous
 #import command
@@ -10,7 +11,7 @@ import wpilib
 #import subsystem
 #import utils
 from oi.OI import OI
-
+from oi.keymap import Keymap
 from subsystem import Drivetrain
 
 class Robot(wpilib.TimedRobot):
@@ -21,6 +22,14 @@ class Robot(wpilib.TimedRobot):
         # Initialize Operator Interface
         OI.init()
         OI.map_controls()
+        self.drivetrain = Drivetrain()
+
+    def robotPeriodic(self) -> None:
+        #self.drivetrain.zero_turn()
+        pass
+
+
+        
 
     # Initialize subsystems
 
@@ -30,23 +39,16 @@ class Robot(wpilib.TimedRobot):
         pass
 
     def teleopPeriodic(self):
-        pass
+        self.drivetrain.zero_turn()
+        self.drivetrain.turn(90)
+        self.drivetrain.tankdrive(Keymap.Drivetrain.DRIVE_LEFT.value, Keymap.Drivetrain.DRIVE_RIGHT.value)
 
     def autonomousInit(self):
-        self.drivetrain = Drivetrain()
-
+        pass
     def autonomousPeriodic(self):
-        self.drivetrain.drive_motor_1.set_raw_output(.5)
-        self.drivetrain.turn_motor_1.set_raw_output(.1)
-
-        self.drivetrain.drive_motor_2.set_raw_output(.5)
-        self.drivetrain.turn_motor_2.set_raw_output(.1)
-
-        self.drivetrain.drive_motor_3.set_raw_output(.5)
-        self.drivetrain.turn_motor_3.set_raw_output(.1)
-
-        self.drivetrain.drive_motor_4.set_raw_output(.5)
-        self.drivetrain.turn_motor_4.set_raw_output(.1)
+        self.drivetrain.zero()
+        self.drivetrain.turn(0)
+        
     def disabledInit(self) -> None:
         pass
 
