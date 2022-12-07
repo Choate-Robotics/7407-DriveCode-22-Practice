@@ -1,7 +1,5 @@
 import commands2
 import wpilib
-
-import autonomous
 import command
 import config
 import constants
