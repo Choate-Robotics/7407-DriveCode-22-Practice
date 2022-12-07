@@ -1,9 +1,10 @@
-import subsystem
+from subsystem import Drivetrain
 import sensors
 import wpilib
 
 
 class Robot:
+    drivetrain = Drivetrain()
     pass
 
 
