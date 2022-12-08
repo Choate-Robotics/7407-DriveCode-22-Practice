@@ -25,14 +25,12 @@ class Robot(wpilib.TimedRobot):
     # Pneumatics
 
     def teleopInit(self):
+        commands2.CommandScheduler.getInstance().schedule(
+            command.TankDrive(robot_systems.Robot.drivetrain)
+        )
         pass
 
     def teleopPeriodic(self):
-        forward = Keymap.Drivetrain.left_joy_forward.value if abs(Keymap.Drivetrain.left_joy_forward.value) > .15 else 0
-        turn = Keymap.Drivetrain.left_joy_horizontal.value if abs(Keymap.Drivetrain.left_joy_horizontal.value) \
-                                                                      > .15 else 0
-
-        robot_systems.Robot.drivetrain.turn_while_drive(forward, turn)
         pass
 
     def autonomousInit(self):
