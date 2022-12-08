@@ -4,15 +4,21 @@ from oi.keymap import Keymap
 import wpilib
 import robot_systems
 from robotpy_toolkit_7407.command import SubsystemCommand
-import subsystem
+from subsystem import Drivetrain
+import commands2
 
 
-class TankDrive(SubsystemCommand[subsystem.Drivetrain]):
+class TankDrive(commands2.CommandBase):
+
+    def __init__(self, subsystem: Drivetrain):
+        super().__init__()
+        self.subsystem = subsystem
 
     def initialize(self) -> None:
         pass
 
     def execute(self) -> None:
+        print("MEOW")
         forward = Keymap.Drivetrain.left_joy_forward.value if abs(Keymap.Drivetrain.left_joy_forward.value) > .15 else 0
         turn = Keymap.Drivetrain.left_joy_horizontal.value if abs(Keymap.Drivetrain.left_joy_horizontal.value) \
                                                               > .15 else 0
