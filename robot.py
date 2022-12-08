@@ -28,10 +28,11 @@ class Robot(wpilib.TimedRobot):
         pass
 
     def teleopPeriodic(self):
-        left_power = Keymap.Drivetrain.left_joy.value if abs(Keymap.Drivetrain.left_joy.value) > .15 else 0
-        right_power = Keymap.Drivetrain.right_joy.value if abs(Keymap.Drivetrain.right_joy.value) > .15 else 0
-        robot_systems.Robot.drivetrain.set_left(left_power)
-        robot_systems.Robot.drivetrain.set_right(right_power)
+        forward = Keymap.Drivetrain.left_joy_forward.value if abs(Keymap.Drivetrain.left_joy_forward.value) > .15 else 0
+        turn = Keymap.Drivetrain.left_joy_horizontal.value if abs(Keymap.Drivetrain.left_joy_horizontal.value) \
+                                                                      > .15 else 0
+
+        robot_systems.Robot.drivetrain.turn_while_drive(forward, turn)
         pass
 
     def autonomousInit(self):
