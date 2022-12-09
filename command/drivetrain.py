@@ -7,7 +7,11 @@ from robotpy_toolkit_7407.command import SubsystemCommand
 import subsystem
 
 
-class TankDrive(SubsystemCommand[subsystem.Drivetrain]):
+class TankDrive(commands2.CommandBase):
+    def __init__(self, subsystem: subsystem.drivetrain):
+        super().__init__()
+        self.subsystem = subsystem
+        pass
 
     def initialize(self) -> None:
         pass

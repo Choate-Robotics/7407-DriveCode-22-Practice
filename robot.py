@@ -23,6 +23,9 @@ class Robot(wpilib.TimedRobot):
     # Initialize subsystems
 
     # Pneumatics
+    def robotPeriodic(self) -> None:
+        commands2.CommandScheduler.getInstance().run()
+        pass
 
     def teleopInit(self):
         commands2.CommandScheduler.getInstance().schedule(
