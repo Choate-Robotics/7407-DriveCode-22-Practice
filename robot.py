@@ -20,6 +20,12 @@ class Robot(wpilib.TimedRobot):
         OI.init()
         OI.map_controls()
 
+        commands2.CommandScheduler.getInstance().setPeriod(.03)
+
+    def robotPeriodic(self) -> None:
+
+        commands2.CommandScheduler.getInstance().run()
+
     # Initialize subsystems
 
     # Pneumatics
