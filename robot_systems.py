@@ -4,7 +4,8 @@ import wpilib
 
 
 class Robot:
-    pass
+    drivetrain = subsystem.Drivetrain()
+    drivetrain.init()
 
 
 class Pneumatics:
