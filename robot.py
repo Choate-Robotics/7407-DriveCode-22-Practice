@@ -9,6 +9,7 @@ import sensors
 import subsystem
 import utils
 from oi.OI import OI
+from oi.keymap import Keymap
 
 from subsystem import Drivetrain
 
@@ -21,16 +22,23 @@ class Robot(wpilib.TimedRobot):
         # Initialize Operator Interface
         OI.init()
         OI.map_controls()
+        commands2.CommandScheduler.getInstance().setPeriod(.03)
+    
+    def robotPeriodic(self) -> None:
+
+        commands2.CommandScheduler.getInstance().run()
 
     # Initialize subsystems
 
     # Pneumatics
 
     def teleopInit(self):
-        pass
+        commands2.CommandScheduler.getInstance().schedule(
+            command.TankDrive(subsystem.Drivetrain)
+        )
 
     def teleopPeriodic(self):
-        pass
+        ...
 
     def autonomousInit(self):
         self.drivetrain = Drivetrain()

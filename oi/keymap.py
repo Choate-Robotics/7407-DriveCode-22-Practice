@@ -5,11 +5,14 @@ from robotpy_toolkit_7407.oi import (
     DefaultButton,
 )
 
+DRIVERCONTROLLER = XBoxController
 
 class Controllers:
-    DRIVER: int
+    DRIVER = 0
     OPERATOR: int
 
 
 class Keymap:
-    pass
+    class Drivetrain:
+        DRIVE_LEFT = JoystickAxis(Controllers.DRIVER, DRIVERCONTROLLER.L_JOY[1])
+        DRIVE_RIGHT = JoystickAxis(Controllers.DRIVER, DRIVERCONTROLLER.R_JOY[1])

@@ -48,8 +48,19 @@ class Drivetrain:
         self.turn_motor_4.set_target_position(20)
     
     def setLeftSpeed(self, speed):
-        self.drive_motor_1.set_raw_output(speed)
-        self.drive_motor_4.set_raw_output(speed)
+        print("Left speed: ", speed)
+        if (-0.15 <= speed and speed <= 0.15):
+            self.drive_motor_1.set_raw_output(0)
+            self.drive_motor_4.set_raw_output(0)
+        else:
+            self.drive_motor_1.set_raw_output(speed)
+            self.drive_motor_4.set_raw_output(speed)
+            
     def setRightSpeed(self, speed):
-        self.drive_motor_2.set_raw_output(speed)
-        self.drive_motor_3.set_raw_output(speed)
+        print("Right speed:", speed)
+        if (-0.15 <= speed and speed <= 0.15):
+            self.drive_motor_2.set_raw_output(0)
+            self.drive_motor_3.set_raw_output(0)
+        else:
+            self.drive_motor_2.set_raw_output(speed)
+            self.drive_motor_3.set_raw_output(speed)
