@@ -14,7 +14,7 @@ MOVE_CONFIG = SparkMaxConfig(
 )
 
 
-class Drivetrain:
+class Drivetrain():
     def __init__(self):
         self.drive_motor_1 = SparkMax(can_id=1,config = MOVE_CONFIG)
         self.turn_motor_1 = SparkMax(can_id=2, config = TURN_CONFIG)
