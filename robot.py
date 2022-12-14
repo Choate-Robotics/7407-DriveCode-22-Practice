@@ -1,7 +1,6 @@
 import commands2
 import wpilib
 
-import autonomous
 import command
 import config
 import constants
@@ -9,10 +8,12 @@ import robot_systems
 import sensors
 import subsystem
 import utils
+from oi.keymap import Keymap
 from oi.OI import OI
+from robot_systems import Robot
 
 
-class Robot(wpilib.TimedRobot):
+class _Robot(wpilib.TimedRobot):
     def __init__(self):
         super().__init__()
 
@@ -21,11 +22,21 @@ class Robot(wpilib.TimedRobot):
         OI.init()
         OI.map_controls()
 
+    def robotPeriodic(self) -> None:
+        commands2.CommandScheduler.getInstance().run()
+
     # Initialize subsystems
 
     # Pneumatics
 
     def teleopInit(self):
+        # commands2.CommandScheduler.getInstance().schedule(
+        #     commands2.SequentialCommandGroup(
+        #         command.TankDrive(Robot.drivetrain)
+        #         # command.MoveSideways(Robot.drivetrain)
+        #     )
+        # )
+        # command.TankDrive(Robot.drivetrain)
         pass
 
     def teleopPeriodic(self):
@@ -45,4 +56,4 @@ class Robot(wpilib.TimedRobot):
 
 
 if __name__ == "__main__":
-    wpilib.run(Robot)
+    wpilib.run(_Robot)
